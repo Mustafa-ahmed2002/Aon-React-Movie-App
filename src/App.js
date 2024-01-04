@@ -35,7 +35,7 @@ function App() {
 
     let resp = await fetch(SEARCH_API + "&query=" + searchTerm, options);
     let data = await resp.json();
-    console.log(data);
+
     setMovies(data.results);
     setSearchterm("");
   };
@@ -43,19 +43,28 @@ function App() {
   const changeHandler = (e) => {
     setSearchterm(e.target.value);
   };
+  const clickHandler = async () => {
+    let resp = await fetch(API_MAIN, options);
+    let data = await resp.json();
 
+    setMovies(data.results);
+  };
   return (
     <>
-      <form onSubmit={handleOnSubmit}>
-        <header className="search">
-          <input
-            type="search"
-            placeholder="search"
-            value={searchTerm}
-            onChange={changeHandler}
-          />
-        </header>
-      </form>
+      <div className="home">
+        <button onClick={clickHandler}>Home</button>
+
+        <form onSubmit={handleOnSubmit}>
+          <header className="search">
+            <input
+              type="search"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={changeHandler}
+            />
+          </header>
+        </form>
+      </div>
       <div className="movie-container">
         {movies.map((movie) => (
           <Api key={movie.id} {...movie} />
