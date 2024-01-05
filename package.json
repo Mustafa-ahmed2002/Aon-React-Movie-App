@@ -2,10 +2,9 @@
   "name": "movie-app-react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel index.html",
+    "start": "parcel index.html",
     "build": "parcel build"
   },
   "keywords": [],
